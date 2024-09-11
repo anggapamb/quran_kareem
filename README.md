@@ -10,11 +10,11 @@
 
 ## Screenshots
 
-![Screenshot 1](https://raw.githubusercontent.com/anggapamb/quran_kareem/main/screenshot/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-09-11%20at%2010.16.46.png)
-*Tampilan halaman utama aplikasi Quran Kareem.*
+<p>
+  <img src="https://raw.githubusercontent.com/anggapamb/quran_kareem/main/screenshot/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-09-11%20at%2010.16.46.png" alt="Screenshot 1" width="20%" style="display: inline-block; vertical-align: top; margin-right: 10px;"/>
+  <img src="https://raw.githubusercontent.com/anggapamb/quran_kareem/main/screenshot/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-08-20%20at%2013.47.44.png" alt="Screenshot 2" width="20%" style="display: inline-block; vertical-align: top;"/>
+</p>
 
-![Screenshot 2](https://raw.githubusercontent.com/anggapamb/quran_kareem/main/screenshot/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-08-20%20at%2013.47.44.png)
-*Tampilan halaman pembacaan surah.*
 
 ## Teknologi yang Digunakan
 
@@ -38,7 +38,13 @@ Ikuti langkah-langkah di bawah untuk menginstal dan menjalankan aplikasi ini:
     flutter pub get
     ```
 
-3. **Jalankan aplikasi:**
+3. **Jalankan Build Runner:**
+
+    ```bash
+    flutter pub run build_runner build
+    ```
+
+4. **Jalankan aplikasi:**
 
     ```bash
     flutter run
