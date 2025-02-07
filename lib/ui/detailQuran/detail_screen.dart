@@ -80,6 +80,7 @@ class DetailScreen extends CoreScreen<DetailViewModel> {
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
+                                      textAlign: TextAlign.center,
                                     ),
                                     const Gap(16),
                                     Text(
@@ -89,6 +90,7 @@ class DetailScreen extends CoreScreen<DetailViewModel> {
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
+                                      textAlign: TextAlign.center,
                                     ),
                                     const Gap(4),
                                     Text(
@@ -98,6 +100,7 @@ class DetailScreen extends CoreScreen<DetailViewModel> {
                                         color: Colors.white,
                                         fontWeight: FontWeight.normal,
                                       ),
+                                      textAlign: TextAlign.center,
                                     )
                                   ],
                                 ),
