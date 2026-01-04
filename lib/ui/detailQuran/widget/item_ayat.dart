@@ -3,7 +3,7 @@ import 'package:flutter_core/core.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:quran_kareem/core/data/model/detailSurat/ayat.dart';
 import 'package:quran_kareem/core/utils/app_colors.dart';
-import 'package:share_extend/share_extend.dart';
+import 'package:share_plus/share_plus.dart';
 
 enum AudioState { play, idle, loading }
 
@@ -58,7 +58,9 @@ class _ItemAyatState extends State<ItemAyat> {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: const Color.fromRGBO(10, 32, 96, 1)),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: const Color.fromRGBO(10, 32, 96, 1)),
             child: Row(
               children: [
                 Container(
@@ -82,10 +84,11 @@ class _ItemAyatState extends State<ItemAyat> {
                     children: [
                       InkWell(
                         onTap: () {
-                          ShareExtend.share(
-                              '${widget.nameSurat} ayat ${widget.ayat?.nomorAyat}\n${widget.ayat?.teksArab}\nArtinya: ${widget.ayat?.teksIndonesia}', "text");
+                          Share.share(
+                              '${widget.nameSurat} ayat ${widget.ayat?.nomorAyat}\n${widget.ayat?.teksArab}\nArtinya: ${widget.ayat?.teksIndonesia}');
                         },
-                        child: const Icon(Icons.share_outlined, color: AppColors.textBlue, size: 30),
+                        child:
+                            const Icon(Icons.share_outlined, color: AppColors.textBlue, size: 30),
                       ),
                       const Gap(16),
                       audioState == AudioState.loading
@@ -103,7 +106,9 @@ class _ItemAyatState extends State<ItemAyat> {
                                 _playAudio();
                               },
                               child: Icon(
-                                audioState == AudioState.idle ? Icons.play_arrow_outlined : Icons.pause,
+                                audioState == AudioState.idle
+                                    ? Icons.play_arrow_outlined
+                                    : Icons.pause,
                                 color: AppColors.textBlue,
                                 size: 30,
                               ),

@@ -17,7 +17,7 @@ class DetailScreen extends CoreScreen<DetailViewModel> {
   Widget buildScreen(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) {
+      onPopInvokedWithResult: (didPop, result) {
         if (didPop) {
           return;
         }
@@ -55,10 +55,17 @@ class DetailScreen extends CoreScreen<DetailViewModel> {
                             gradient: const LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
-                              colors: [Color.fromRGBO(101, 214, 252, 1), Color.fromRGBO(69, 94, 181, 1)],
+                              colors: [
+                                Color.fromRGBO(101, 214, 252, 1),
+                                Color.fromRGBO(69, 94, 181, 1)
+                              ],
                             ),
                           ),
-                    margin: EdgeInsets.only(left: 20, right: 20, top: viewModel.detailSuratLoading.value ? 300 : 20, bottom: 20),
+                    margin: EdgeInsets.only(
+                        left: 20,
+                        right: 20,
+                        top: viewModel.detailSuratLoading.value ? 300 : 20,
+                        bottom: 20),
                     padding: const EdgeInsets.all(16),
                     child: Column(
                       children: [
