@@ -1,4 +1,4 @@
-package com.example.quran_kareem
+package com.anggapamb.quran_kareem
 
 import io.flutter.embedding.android.FlutterActivity
 

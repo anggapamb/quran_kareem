@@ -15,7 +15,47 @@ class HomeScreen extends CoreScreen<HomeViewModel> {
 
   @override
   Widget buildScreen(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
+      key: scaffoldKey,
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: const BoxDecoration(
+                color: AppColors.primary,
+              ),
+              child: Center(
+                child: Assets.images.icLogo.image(
+                  width: 150,
+                  height: 150,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.info_outline, color: AppColors.primary),
+              title: const Text('About App',
+                  style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold)),
+              onTap: () {
+                Get.back();
+                showAboutDialog(
+                  context: context,
+                  applicationName: 'Quran Kareem',
+                  applicationVersion: '1.0.0',
+                  applicationIcon: Assets.images.appLogo.image(width: 50, height: 50),
+                  children: [
+                    const Text(
+                        'A comprehensive Quran application for reading and reciting the Holy Quran.'),
+                    const SizedBox(height: 10),
+                    const Text('Developed using Flutter.'),
+                  ],
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -28,34 +68,23 @@ class HomeScreen extends CoreScreen<HomeViewModel> {
             SliverAppBar(
               pinned: true,
               backgroundColor: Colors.transparent,
-              leading: Container(
-                height: 40,
-                width: 40,
-                margin: const EdgeInsets.only(left: 20),
-                child: Assets.images.icMenu.image(),
+              leading: InkWell(
+                onTap: () {
+                  scaffoldKey.currentState?.openDrawer();
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  margin: const EdgeInsets.only(left: 20),
+                  child: Assets.images.icMenu.image(),
+                ),
               ),
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
                   decoration: const BoxDecoration(color: AppColors.primary),
                 ),
               ),
-              actions: [
-                Container(
-                  margin: const EdgeInsets.only(right: 20),
-                  child: CircleAvatar(
-                    radius: 21,
-                    backgroundColor: AppColors.textBlue,
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundImage: Image.network(
-                        'https://randomuser.me/api/portraits/men/86.jpg',
-                        loadingBuilder: (context, child, loadingProgress) => const CircularProgressIndicator(),
-                        errorBuilder: (context, error, stackTrace) => const Icon(Icons.image_not_supported),
-                      ).image,
-                    ),
-                  ),
-                )
-              ],
+              actions: const [],
             ),
             SliverToBoxAdapter(
               child: Collect(() {
@@ -166,7 +195,8 @@ class HomeScreen extends CoreScreen<HomeViewModel> {
                   return ItemSurat(
                     surat: viewModel.surat.value[index],
                     onTap: () async {
-                      final callback = await Get.toNamed(DetailScreen.routeName, arguments: viewModel.surat.value[index]);
+                      final callback = await Get.toNamed(DetailScreen.routeName,
+                          arguments: viewModel.surat.value[index]);
                       if (callback != null) {
                         viewModel.getLastRead();
                       }
